@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=title%></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/tetris.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+  	<h3>Tetris multi.....</h3>
+  	<%if(index == 'signup'){%>
+		<form action="/signup" method="post" id="freg">
+			nickname : <input type="text" id="nickname" name="nickname" />
+			<button type="submit">Sign up</button>
+		</form>
+		<script>
+			$(function(){
+				$('#freg').submit(function(e){
+					if($.trim($('#nickname').val()) === ''){
+						alert('nickname is required');
+						return false;
+					}
+				});
+			});
+		</script>
+  	<%}else if(index == 'in'){%>
+  		<%include tpl/in.tpl%>
+  	<%}%>
+  </body>
+</html>
